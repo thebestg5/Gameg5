@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloxd.io - Juga ara!</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+
+    header {
+      width: 100%;
+      padding: 12px;
+      background: #0b1220;
+      color: #fff;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .game-container {
+      position: relative;
+      width: 100%;
+      max-width: 1280px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .controls {
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      background: #0b1220;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      margin: 4px;
+      border-radius: 8px;
+      border: none;
+      background: #1f2937;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    @media (max-width: 520px) {
+      header h1 {
+        font-size: 16px;
+      }
+      .btn {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Bloxd.io - Juga ara!</h1>
+  </header>
+
+  <div class="game-container">
+    <iframe 
+      id="gameIframe"
+      src="https://html5.gamedistribution.com/52c85b3037d84d5f9fbd7108bc832ccc/?gd_sdk_referrer_url=YOUR_PAGE_URL"
+      allowfullscreen
+      scrolling="no"
+      frameborder="0">
+    </iframe>
+  </div>
+
+  <div class="controls">
+    <button class="btn" id="fullscreenBtn">Pantalla completa</button>
+    <button class="btn" onclick="window.location.href='YOUR_PAGE_URL';">Tornar enrere</button>
+  </div>
+
+  <script>
+    const iframe = document.getElementById('gameIframe');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+    fullscreenBtn.addEventListener('click', async () => {
+      try {
+        if (iframe.requestFullscreen) {
+          await iframe.requestFullscreen();
+        } else if (iframe.webkitRequestFullscreen) {
+          await iframe.webkitRequestFullscreen();
+        } else {
+          alert("Pantalla completa no suportada pel navegador.");
+        }
+      } catch(e) {
+        console.warn(e);
+      }
+    });
+  </script>
+
+</body>
+</html>
